@@ -1,4 +1,8 @@
-.classpath
-.project
-.settings/
+.idea/
+*.iml
+*.iws
+
+log/
 target/
+
+.DS_Store

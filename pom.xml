@@ -12,5 +12,6 @@
 
     <modules>
         <module>hello-world</module>
+        <module>user-api</module>
     </modules>
 </project>
