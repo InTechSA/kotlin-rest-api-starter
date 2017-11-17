@@ -20,6 +20,20 @@ $ mvn install
 $ java -jar hello-world/target/hello-world-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
+```shell
+$ curl localhost:7000
+```
+
+#### Run basic user api example
+
+```shell
+$ java -jar user-api/target/user-api-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+```shell
+$ curl localhost:7000/users
+```
+
 #### Stuff used to make this:
 
  * [Javalin](https://javalin.io/) : Simple REST APIs for Java and Kotlin
