@@ -1,3 +1,3 @@
 package model
 
-data class User(val name: String = "", val email: String = "", val id: Int = -1)
+data class User(val name: String, val email: String, val _id: String?)

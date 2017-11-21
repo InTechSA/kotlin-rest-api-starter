@@ -1,38 +1,57 @@
 package dao
 
+import com.mongodb.async.client.MongoCollection
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.launch
 import model.User
-import java.util.concurrent.atomic.AtomicInteger
+import org.litote.kmongo.coroutine.* //NEEDED! import KMongo extensions
+import org.litote.kmongo.async.KMongo
 
 class UserDao {
 
-    val users = hashMapOf(
-            0 to User(name = "Alice", email = "alice@alice.kt", id = 0),
-            1 to User(name = "Bob", email = "bob@bob.kt", id = 1),
-            2 to User(name = "Carol", email = "carol@carol.kt", id = 2),
-            3 to User(name = "Dave", email = "dave@dave.kt", id = 3)
-    )
+    val collection: MongoCollection<User>
 
-    var lastId: AtomicInteger = AtomicInteger(users.size - 1)
+    init {
+      println("init db connection")
 
-    fun save(name: String, email: String) {
-        val id = lastId.incrementAndGet()
-        users.put(id, User(name = name, email = email, id = id))
+      val client = KMongo.createClient()
+      val database = client.getDatabase("test")
+      this.collection = database.getCollection<User>()
+
+      println("connected !!")
     }
 
-    fun findById(id: Int): User? {
-        return users[id]
+    fun save(name: String, email: String, _id: String? = null) {
+        launch(CommonPool) {
+            collection.save(User(name = name, email = email, _id = _id))
+        }
     }
 
-    fun findByEmail(email: String): User? {
-        return users.values.find { it.email == email }
+    fun findById(_id: String):Deferred<User?> {
+        return async(CommonPool){
+            collection.findOneById(_id)
+        }
     }
 
-    fun update(id: Int, user: User) {
-        users.put(id, User(name = user.name, email = user.email, id = id))
+    fun find(page: Int?, size: Int?):Deferred<MutableList<User>> {
+        return async(CommonPool) {
+            collection.find().skip((page?:0) * (size?:10)).limit(size?:10).toList()
+        }
+
     }
 
-    fun delete(id: Int) {
-        users.remove(id)
+    fun findByEmail(email: String):Deferred<User?> {
+        return async(CommonPool){
+            collection.findOne("{email: '$email'}")
+        }
+    }
+
+    fun delete(_id: String) {
+        launch(CommonPool){
+            collection.deleteOneById(_id)
+        }
     }
 
 }

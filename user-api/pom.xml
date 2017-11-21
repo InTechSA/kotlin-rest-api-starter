@@ -41,6 +41,19 @@
         <version>1.7.22</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.litote.kmongo</groupId>
+        <artifactId>kmongo-coroutine-native</artifactId>
+        <version>3.5.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-reflect</artifactId>
+        <version>1.1.60</version>
+    </dependency>
+
+
     </dependencies>
 
     <build>
