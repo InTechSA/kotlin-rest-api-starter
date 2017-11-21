@@ -11,6 +11,7 @@ $ git clone ssh://git@gitlab.intech.lu:10022/ID/kotlin-rest-api-starter.git
 #### Build project using maven
 
 ```shell
+$ cd kotlin-rest-api-starter/
 $ mvn install
 ```
 
@@ -24,7 +25,7 @@ $ java -jar hello-world/target/hello-world-1.0-SNAPSHOT-jar-with-dependencies.ja
 $ curl localhost:7000
 ```
 
-#### Run basic user api example
+#### Run basic user api example (supposing you have a mongodb instance running at localhost:27017)
 
 ```shell
 $ java -jar user-api/target/user-api-1.0-SNAPSHOT-jar-with-dependencies.jar
@@ -36,5 +37,6 @@ $ curl localhost:7000/users
 
 #### Stuff used to make this:
 
- * [Javalin](https://javalin.io/) : Simple REST APIs for Java and Kotlin
  * [Kotlin](https://kotlinlang.org/) : Statically typed programming language
+ * [Javalin](https://javalin.io/) : Simple REST APIs for Java and Kotlin
+ * [Kmongo](https://litote.org/kmongo/) : A Kotlin toolkit for Mongo
