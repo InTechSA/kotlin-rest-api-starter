@@ -6,6 +6,7 @@ import io.javalin.ApiBuilder.patch
 import io.javalin.ApiBuilder.delete
 import io.javalin.Javalin
 import dao.UserDao
+import hash.Hash
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.runBlocking
 import model.CreateUserBody
@@ -40,6 +41,7 @@ fun main(args: Array<String>) {
 
         get("/users/:id") { ctx ->
             runBlocking {
+
                 val user = userDao.findById(ctx.param("id")!!).await()
 
                 user?.let {
@@ -50,6 +52,18 @@ fun main(args: Array<String>) {
 
             }
 
+        }
+
+        get("/users/:id/hash") { ctx ->
+            runBlocking {
+
+                userDao.findById(ctx.param("id")!!).await()?.let {
+                    ctx.json(Hash.sha512(it.toString()))
+                } ?: run {
+                    ctx.status(404)
+                }
+
+            }
         }
 
         get("/users/email/:email") { ctx ->
