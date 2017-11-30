@@ -13,6 +13,7 @@ $ git clone ssh://git@gitlab.intech.lu:10022/ID/kotlin-rest-api-starter.git
 ```shell
 $ cd kotlin-rest-api-starter/
 $ mvn install
+$ mvn test
 ```
 
 #### Run Hello World
@@ -40,3 +41,4 @@ $ curl localhost:7000/users
  * [Kotlin](https://kotlinlang.org/) : Statically typed programming language
  * [Javalin](https://javalin.io/) : Simple REST APIs for Java and Kotlin
  * [Kmongo](https://litote.org/kmongo/) : A Kotlin toolkit for Mongo
+ * [KotlinTest](https://github.com/kotlintest/kotlintest) : Flexible and comprehensive testing tool for Kotlin
