@@ -5,7 +5,7 @@
 
 
 ```shell
-$ git clone ssh://git@gitlab.intech.lu:10022/ID/kotlin-rest-api-starter.git
+$ git clone https://github.com/InTechSA/kotlin-rest-api-starter.git
 ```
 
 #### Build project using maven
