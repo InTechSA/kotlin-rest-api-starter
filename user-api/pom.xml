@@ -11,7 +11,7 @@
 
     <properties>
         <kotlin.version>1.1.60</kotlin.version>
-        <main.class>router.UserRouterKt</main.class>
+        <main.class>MainKt</main.class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -52,13 +52,6 @@
         <artifactId>kotlin-reflect</artifactId>
         <version>1.1.60</version>
       </dependency>
-
-      <dependency>
-        <groupId>lu.intech.id</groupId>
-        <artifactId>hash-api</artifactId>
-        <version>1.0-SNAPSHOT</version>
-       </dependency>
-
 
     </dependencies>
 

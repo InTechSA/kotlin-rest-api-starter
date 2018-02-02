@@ -13,6 +13,5 @@
     <modules>
         <module>hello-world</module>
         <module>user-api</module>
-        <module>hash-api</module>
     </modules>
 </project>
